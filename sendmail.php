@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';   // Gmail SMTP server
+        $mail->Host       = 'smtp.gmail.com';  
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'njagi.mungai@strathmore.edu'; // your Gmail
-        $mail->Password   = 'djti umzu jgcw hbgk';   // ⚠️ Gmail App Password, not your Gmail login password
+        $mail->Username   = 'njagi.mungai@strathmore.edu';
+        $mail->Password   = 'djti umzu jgcw hbgk';  
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
@@ -30,20 +30,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Email content
         $mail->isHTML(true);
         $mail->Subject = "ICS 2.2 Account Registration";
-        $mail->Body    = "
-            <p>Hello <strong>$name</strong>,</p>
-            <p>You requested an account on <b>ICS 2.2</b>.</p>
-            <p>In order to continue, please click the button below:</p>
-            <p>
-              <a href='https://yourdomain.com/confirm.php?email=$email' 
-                 style='background-color:#2563eb; color:white; padding:10px 20px; 
-                 text-decoration:none; border-radius:6px; font-size:16px;'>
-                 Complete Registration
-              </a>
-            </p>
-            <br>
-            <p>Regards,<br>Systems Admin</p>
-        ";
+$mail->Body    = "
+    <p>Hello <strong>$name</strong>,</p>
+    <p>You requested an account on <b>ICS 2.2</b>.</p>
+    <p>
+        In order to continue, you need to 
+        <a href='#'>click here</a> 
+        to complete the registration process:
+    </p>
+    <p>
+        <a href='https://yourdomain.com/confirm.php?email=$email' 
+           style='background-color:#2563eb; color:white; padding:10px 20px; 
+           text-decoration:none; border-radius:6px; font-size:16px;'>
+           Complete Registration
+        </a>
+    </p>
+    <br>
+    <p>Regards,<br>Systems Admin<br> ICS 2.2</p>
+";
 
         $mail->send();
         echo "✅ Confirmation email sent successfully to $email.";
