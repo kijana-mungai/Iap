@@ -30,24 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Email content
         $mail->isHTML(true);
         $mail->Subject = "ICS 2.2 Account Registration";
-$mail->Body    = "
-    <p>Hello <strong>$name</strong>,</p>
-    <p>You requested an account on <b>ICS 2.2</b>.</p>
-    <p>
-        In order to continue, you need to 
-        <a href='#'>click here</a> 
-        to complete the registration process:
-    </p>
-    <p>
-        <a href='https://yourdomain.com/confirm.php?email=$email' 
-           style='background-color:#2563eb; color:white; padding:10px 20px; 
-           text-decoration:none; border-radius:6px; font-size:16px;'>
-           Complete Registration
-        </a>
-    </p>
-    <br>
-    <p>Regards,<br>Systems Admin<br> ICS 2.2</p>
-";
+        $mail->Body    = "  
+            <p>Hello <strong>$name</strong>,</p>
+            <p>You requested an account on <b>ICS 2.2</b>.</p>
+            <p>
+                To complete your registration, please 
+                <a href='http://localhost/Internet%20app/registation.php'$email'>click here</a>.
+            </p>
+            <br>
+            <p>Regards,<br>Systems Admin<br>ICS 2.2</p>
+        ";
 
         $mail->send();
         echo "✅ Confirmation email sent successfully to $email.";
